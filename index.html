@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>colorPicker</title>
+</head>
+<body>
+    <div class="w-full h-20 flex font-bold gap-5">
+        <div class="w-[33%] h-[inherit] flex flex-col gap-2">
+            <div class="h-[inherit] flex items-center justify-center bg-red-700 rounded-full box-red text-white">255</div>
+            <input type="range" value="255" min="0" max="255" class="input-red">
+        </div>
+        <div class="w-[33%] h-[inherit] flex flex-col gap-2">
+            <div class="h-[inherit] flex items-center justify-center bg-green-700 rounded-full box-green text-white">255</div>
+            <input type="range" value="255" min="0" max="255" class="input-green">
+        </div>
+        <div class="w-[33%] h-[inherit] flex flex-col gap-2">
+            <div class="h-[inherit] flex items-center justify-center bg-blue-700 rounded-full box-blue text-white">255</div>
+            <input type="range" value="255" min="0" max="255" class="input-blue">
+        </div>
+    </div>
+
+    <div class="w-full h-20 font-bold mt-8 flex items-center justify-center border-2 border-solid border-slate-500 result text-white">RGB(255,255,255)</div>
+
+    <script>
+        const boxRed=document.querySelector(".box-red");
+        const boxGreen=document.querySelector(".box-green");
+        const boxBlue=document.querySelector(".box-blue");
+
+        const redLevel=document.querySelector(".input-red");
+        const greenLevel=document.querySelector(".input-green");
+        const blueLevel=document.querySelector(".input-blue");
+
+        const result=document.querySelector(".result");
+
+        redLevel.addEventListener("input",function(){
+            boxRed.style.backgroundColor = `rgb(${redLevel.value},0,0)`;
+            boxRed.textContent = redLevel.value;
+            result.style.backgroundColor = `rgb(${redLevel.value},${greenLevel.value},${blueLevel.value})`;
+            result.textContent = `RGB(${redLevel.value},${greenLevel.value},${blueLevel.value})`;
+        });
+        greenLevel.addEventListener("input",function(){
+            boxGreen.style.backgroundColor = `rgb(0,${greenLevel.value},0)`;
+            boxGreen.textContent = greenLevel.value;
+            result.style.backgroundColor = `rgb(${redLevel.value},${greenLevel.value},${blueLevel.value})`;
+            result.textContent = `RGB(${redLevel.value},${greenLevel.value},${blueLevel.value})`
+        });
+        blueLevel.addEventListener("input",function(){
+            boxBlue.style.backgroundColor = `rgb(0,0,${blueLevel.value})`;
+            boxBlue.textContent = blueLevel.value;
+            result.style.backgroundColor = `rgb(${redLevel.value},${greenLevel.value},${blueLevel.value})`;
+            result.textContent = `RGB(${redLevel.value},${greenLevel.value},${blueLevel.value})`
+        });  
+    </script>
+</body>
+</html>
